@@ -1,12 +1,44 @@
 {% extends 'base.html' %}
 
+<script xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+
+      $( function() {
+    $( ".widget input[type=submit], .widget a, .widget button" ).button();
+    $( "button, input, a" ).on( "click", function( event ) {
+      event.preventDefault();
+    } );
+  } );
+
+</script>
 {% block header %}
-  <h1>{% block title %}Selecting data{% endblock %}</h1>
-  {% if g.user %}
-    <a class="action" href="{{ url_for('search.create') }}">Create dataset from current selection</a>
-  {% endif %}
+<div class = "row">
+  <h1>{% block title %}Selection tool{% endblock %}</h1>
+</div>
 {% endblock %}
 
 {% block content %}
-  <p>Here is a list of items</p>
+<div class = "row">
+  <p>In this web application, you can make a selection from the digital KB collections: newspapers, books, journals.
+  </p>
+</div>
+<div class = "row">
+  <div class = "column" style = "flex: 30" id="filter_block">
+    <h1>Filters</h1>
+    {% include 'search/filters.html' %}</div>
+  <div class = "column" style = "flex: 70" id="dataset_block">
+    <div class="row">
+      <div class = "column" style = "flex: 50"><h1>Statistics for the selected corpus</h1></div>
+      <div class = "column" style = "flex: 50">
+        {% if g.user %}
+          <a class="action" href="{{ url_for('search.create') }}">Save current selection as corpus</a>
+        {% endif %}
+      </div>
+    </div>
+    {% include 'dataset/stats.html' %}</div>
+
+</div>
+
+
+
+
 {% endblock %}

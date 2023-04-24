@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
 <head>
-    <meta charset="UTF-8">
-    <title> - CST</title>
-    <nav>
-  <h1>CST</h1>
-  <ul>
-    {% if g.user %}
+  <meta charset="UTF-8">
+  <title> - CST</title>
+  <nav>
+    <h1>CST</h1>
+    <ul>
+      {% if g.user %}
       <li><span>{{ g.user['username'] }}</span>
       <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
-    {% else %}
+        {% else %}
       <li><a href="{{ url_for('auth.register') }}">Register</a>
       <li><a href="{{ url_for('auth.login') }}">Log In</a>
-    {% endif %}
-  </ul>
-</nav>
+        {% endif %}
+    </ul>
+  </nav>
 </head>
 <body>
 <section class="content">
@@ -23,7 +28,7 @@
     {% block header %}{% endblock %}
   </header>
   {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
+  <div class="flash">{{ message }}</div>
   {% endfor %}
   {% block content %}{% endblock %}
 </section>

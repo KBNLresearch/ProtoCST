@@ -1,0 +1,78 @@
+
+
+<script>
+  $( function() {
+    $( function() {
+    $( "#accordion" ).accordion();
+  } );
+
+    var dateFormat = "mm/dd/yy",
+      from = $( "#from" )
+        .datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          changeYear: true,
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#to" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        changeYear: true,
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+
+      return date;
+    }
+  } );
+
+
+
+  </script>
+
+
+<div id="accordion">
+    <h3>Text search</h3>
+    <div>
+        <input type="text" id="text-contains" name="text-contains">
+        This should: <ul>
+        <li>Support boolean operators (AND, OR, NOT)</li>
+        <li>Support Fuzzy matching?</li>
+        <li>Support Regular Expressions</li>
+    </ul>
+    </div>
+
+    <h3>Publication</h3>
+    <div>
+        <h4>Publication date</h4>
+            <label for="from">From</label>
+            <input type="text" id="from" name="from">
+            <label for="to">to</label>
+            <input type="text" id="to" name="to">
+        <h4>Publication title(s)</h4>
+            <input type="text" id="title" name="title">
+    </div>
+
+    <h3> Quality</h3>
+    <div>
+        <fieldset class="checkboxgroup">
+            <h4>Estimated transcription quality</h4>
+            <label><input type="checkbox" name="q1-borndigital" id="q1-borndigital">Born Digital</label>
+            <label><input type="checkbox" name="q2-topsmaak" id="q2-topsmaak">Topsmaak</label>
+            <label><input type="checkbox" name="q3-abbey" id="q3-abbey">ABBEY V...</label>
+            <label><input type="checkbox" name="q4-unspecified" id="q4-unspecified">Unspecified</label>
+        </fieldset>
+    </div>
+
+</div>
