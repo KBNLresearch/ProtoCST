@@ -33,6 +33,9 @@ def create_app(test_config=None):
     from . import search
     app.register_blueprint(search.bp)
 
+    from . import extract
+    app.register_blueprint(extract.bp)
+
     # a simple page that says hello
     @app.route('/hello')
     def hello():
