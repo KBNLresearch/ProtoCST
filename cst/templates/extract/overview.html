@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row"><h1> My corpora </h1></div>
+
+
+<div class="row">
+    <div class="corpora-container">
+        {% for corpus in corpora %}
+        <div class="corpus-card">
+            <h1 style="text-align:center"> {{ corpus['name'] }}</h1>
+            <div class="scrollbox">{{ corpus['description'] if corpus['description'] else ''}}</div>
+            <table>
+                <tbody>
+                <tr> <td>Corpus ID</td> <td> {{ corpus['id'] }}</td> </tr>
+                <tr> <td>Number of documents</td> <td> {{ corpus['nDocuments'] }}</td> </tr>
+                <tr> <td>Created on</td> <td> {{ corpus['created'] }}</td> </tr>
+                </tbody>
+            </table>
+            <div class="row">
+                <button type="submit" id="open">Open in corpus builder</button>
+                <button type="submit" id="extract">Download options</button>
+                <button type="submit" id="delete">Delete corpus</button>
+            </div>
+        </div>
+
+        {%endfor%}
+    </div>
+</div>
+    {% endblock %}
+
+
+Clickable blocks with corpora: name, id, some info (number of documents, document type(s),  ...)
+dot menu attached: open in selection tool, open download options, share with user, etc.
