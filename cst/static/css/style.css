@@ -8,7 +8,7 @@ nav h1 { flex: auto; margin: 0; }
 nav h1 a { text-decoration: none; padding: 0.25rem 0.5rem; }
 nav ul  { display: flex; list-style: none; margin: 0; padding: 0; }
 nav ul li a, nav ul li span, header .action { display: block; padding: 0.5rem; }
-.content { padding: 0 1rem 1rem; }
+.content { padding: 0 0.5rem 0.5rem; }
 .content > header { border-bottom: 1px solid #9cdbd9; display: flex; align-items: flex-end; }
 .content > header h1 { flex: auto; margin: 1rem 0 0.25rem 0; }
 .flash { margin: 1em 0; padding: 1em; background: #cae6f6; border: 1px solid #377ba8; }
@@ -25,6 +25,23 @@ nav ul li a, nav ul li span, header .action { display: block; padding: 0.5rem; }
 input.danger { color: #cc2f2e; }
 input[type=submit] { align-self: start; min-width: 10em; }
 
+.corpora-container {
+  display:grid;
+  grid-gap:10px;
+  grid-template-columns: repeat(auto-fill, 0px);
+  justify-content: space-around;
+}
+
+.corpus-card {
+  padding: 2rem;
+  width: 25rem;
+  max-width: 25rem;
+  border: 5px solid #01415b;
+  border-radius: 25px;
+}
+
+.scrollbox {
+height:8rem;width:25rem;border:1px solid #01415b; border-radius: 5px; overflow:auto;}
 
 .row {
   display: flex;
@@ -54,4 +71,36 @@ input[type=submit] { align-self: start; min-width: 10em; }
     width: 12em;
     float: left;
     padding-left: 1em;
+}
+
+.nav-effect a {
+	text-transform: uppercase;
+	font-weight: bold;
+	text-align: center;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	padding-left: 5rem;
+	padding-right: 5rem;
+}
+
+.nav-effect a::before {
+	content: attr(data-hover);
+	color: #01415b;
+	position: absolute;
+
+	transition: transform 0.3s, opacity 0.3s;
+	-moz-transition: -moz-transform 0.3s, opacity 0.3s;
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+}
+
+.nav-effect a:hover::before,
+.nav-effect a:focus::before {
+	opacity: 0;
+}
+
+
+.ui-state-active {
+  border: 1px solid #01415b;
+  background: #9cdbd9;
+  color: #01415b;
 }
