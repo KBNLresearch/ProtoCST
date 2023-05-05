@@ -26,10 +26,10 @@ input.danger { color: #cc2f2e; }
 input[type=submit] { align-self: start; min-width: 10em; }
 
 .corpora-container {
-  display:grid;
-  grid-gap:10px;
-  grid-template-columns: repeat(auto-fill, 0px);
-  justify-content: space-around;
+  display:flex;
+  flex-direction: row;
+    flex-wrap: wrap;
+
 }
 
 .corpus-card {
