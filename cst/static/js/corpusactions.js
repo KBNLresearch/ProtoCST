@@ -17,6 +17,7 @@ $(document).ready(function() {
     function(data, status){
       alert("Data: " + data + "\nStatus: " + status);
       corpuscard.remove() // Why is this not working??
+      location.reload();  // Ugly alternative is working
     });
   });
   });
