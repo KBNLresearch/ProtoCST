@@ -1,34 +1,22 @@
-const saveDialogButton = document.getElementById("save-corpus");
-const saveDialog = document.getElementById("save-dialog");
-const saveButton = document.getElementById("save");
-const cancelButton = document.getElementById("cancel");
-saveDialog.returnValue = "corpus name"
 
+$(document).ready(function() {
 
-// Save corpus button opens a modal dialog
-saveDialogButton.addEventListener("click", () => {
-  saveDialog.showModal();
-});
-
-
-// Form cancel button closes the dialog box
-cancelButton.addEventListener("click", () => {
-  console.log('Saving corpus was cancelled.')
-  saveDialog.close("corpusNotSaved");
-});
-
-// Form cancel button closes the dialog box
-$('#save').click(function() {
-  $.post('save-corpus',
-  {
-    name: $('#corpus-name').val(),
-    description: $('#corpus-description').val(),
-    query: "[]",
-    documents: "[]",
-  },
-  function(data, status){
-    alert("Data: " + data + "\nStatus: " + status);
-    saveDialog.close("corpusWasSaved");
+  // Delete button deletes the corpus (ajax call to backend)
+  $('.delete').click(function() {
+    // TODO: dialog "Are you sure you want to delete corpus?" Alternative: install rubbish bin
+    var corpusid = $(this).attr('data-id');
+    var corpuscard = $('.corpuscard[data-id='+corpusid+']'); // Am I selecting the right corpus card??
+    console.log('Delete corpus '+corpusid);
+    console.log('Corresponding corpus card '+corpuscard+ corpuscard.attr('data-id'));
+    corpuscard.css("color","yellow");
+    corpuscard.css("border", "5px solid red");
+    $.post('delete-corpus',
+    {
+      corpusid: corpusid,
+    },
+    function(data, status){
+      alert("Data: " + data + "\nStatus: " + status);
+      corpuscard.remove() // Why is this not working??
+    });
   });
-});
-
+  });
