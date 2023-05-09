@@ -7,7 +7,7 @@
 <div class="row">
     <div class="corpora-container">
         {% for corpus in corpora %}
-        <div class="corpus-card" data-id="{{ corpus['id']}}">
+        <div class="corpus-card" id = "corpuscard-{{ corpus['id']}}"  data-id="{{ corpus['id']}}">
             <h1 style="text-align:center"> {{ corpus['name'] }}</h1>
             <div class="scrollbox">{{ corpus['description'] if corpus['description'] else ''}}</div>
             <table>
