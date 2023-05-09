@@ -1,2 +1,5 @@
 Flask>=2.2
 pytest
+pandas
+bs4
+gunicorn
