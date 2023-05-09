@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+<script xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+
+      $( function() {
+    $( ".widget input[type=submit], .widget a, .widget button" ).button();
+    $( "button, input, a" ).on( "click", function( event ) {
+      event.preventDefault();
+    } );
+  } );
+
+</script>
+
+
+{% block content %}
+<div class = "row">
+  <p>In this web application, you can make a selection from the digital KB collections: newspapers, books, journals.
+  </p>
+</div>
+<div class = "row">
+  <div class = "column" style = "flex: 30" id="filter_block">
+    <h1>Filters</h1>
+    {% include 'search/filters.html' %}</div>
+  <div class = "column" style = "flex: 70" id="dataset_block">
+    <div class="row">
+      <div class = "column" style = "flex: 75"><h1>Statistics for the selected corpus</h1></div>
+      <div class = "column" style = "flex: 25">
+        {% if g.user %}
+          <button class="ui-button ui-widget ui-corner-all" id="save-corpus">Save current selection as corpus</button>
+        {% else %}
+          <p> Log in to save your selection as a corpus</p>
+        {% endif %}
+      </div>
+    </div>
+    {% include 'dataset/stats.html' %}</div>
+
+</div>
+<!-- Simple pop-up dialog box -->
+<dialog id="save-dialog">
+  <form method="dialog">
+    Corpus Name:
+    <input type="text" id="corpus-name" name="corpus-name">
+    Corpus Description:
+    <textarea id="corpus-description" name="corpus-description">Provide a short description of your corpus
+    </textarea>
+    <div class="row">
+      <button type="submit" id="save">Save</button>
+      <button type="reset" id="cancel">Cancel</button>
+    </div>
+
+  </form>
+</dialog>
+
+
+<script type=text/javascript src="{{url_for('static', filename='js/build-actions.js') }}"></script>
+
+
+{% endblock %}

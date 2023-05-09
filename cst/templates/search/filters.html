@@ -1,0 +1,103 @@
+<script xmlns="http://www.w3.org/1999/html">
+  $( function() {
+    $( function() {
+    $( "#filter-accordion" ).accordion({heightStyle: "content"});
+  } );
+
+    $( function() {
+    $( "checkboxgroup" ).checkboxradio();
+  } );
+
+    var dateFormat = "mm/dd/yy",
+      from = $( "#from" )
+        .datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          changeYear: true,
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#to" ).datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        changeYear: true,
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+
+    function getDate( element ) {
+      var date;
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+
+      return date;
+    }
+  } );
+
+
+
+  </script>
+
+<!-- Consider adding an accorion-item per publication type (periodical/periodical-article/book etc)
+     Because different faceting makes sense for different types.
+     E.g. title & author for books, article type for newspaper articles, etc.
+     -->
+<div id="filter-accordion">
+    <h3>Text search</h3>
+    <div>
+        <input type="text" id="text-contains" name="text-contains"><br/>
+        This should:
+        <ul>
+            <li>Support boolean operators (AND, OR, NOT)</li>
+            <li>Support Fuzzy matching?</li>
+            <li>Support Regular Expressions</li>
+        </ul>
+    </div>
+
+    <h3>Publication</h3>
+    <div>
+        <fieldset class="checkboxgroup">
+            <h4>Publication type</h4>
+            <label><input type="checkbox" name="m1-newspaper" id="m1">Newspapers</label>
+            <label><input type="checkbox" name="m2-periodicals" id="m2">Journals</label>
+            <label><input type="checkbox" name="m3-books" id="m3">Books</label>
+            <label><input type="checkbox" name="m4-radiobulletins" id="m4">Radio Bulletins</label>
+            <label><input type="checkbox" name="m5-webarchive" id="m5">Web pages</label>
+        </fieldset>
+
+        <h4>Publication date</h4>
+        <label for="from">From</label>
+        <input type="text" id="from" name="from">
+        <label for="to">to</label>
+        <input type="text" id="to" name="to">
+        <h4>Publication title(s)</h4>
+        <input type="text" id="title" name="title">
+    </div>
+
+    <h3> Objects</h3>
+    <div>
+        <fieldset class="checkboxgroup">
+            <h4>Estimated transcription quality</h4>
+            <label><input type="checkbox" name="q1-borndigital" id="q1-borndigital">Born Digital</label>
+            <label><input type="checkbox" name="q2-topsmaak" id="q2-topsmaak">Topsmaak</label>
+            <label><input type="checkbox" name="q3-abbey" id="q3-abbey">ABBEY V...</label>
+            <label><input type="checkbox" name="q4-unspecified" id="q4-unspecified">Unspecified</label>
+        </fieldset>
+        <fieldset class="checkboxgroup">
+            <h4>Available file formats</h4>
+            <label><input type="checkbox" name="f1-metadata" id="f1">Metadata</label>
+            <label><input type="checkbox" name="f2-pdf" id="f2">PDF</label>
+            <label><input type="checkbox" name="f3-alto" id="f3">ALTO</label>
+            <label><input type="checkbox" name="f4-TEI" id="f4">TEI</label>
+            <label><input type="checkbox" name="f5-Epub" id="f5">Epub</label>
+            <label><input type="checkbox" name="f6-WARC" id="f6">Warc</label>
+            <label><input type="checkbox" name="f7-WARC" id="f7">Text</label>
+            <label><input type="checkbox" name="f8-WARC" id="f8">N-grams (Json)</label>
+        </fieldset>
+    </div>
+</div>

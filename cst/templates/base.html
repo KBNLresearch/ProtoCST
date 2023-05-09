@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Load JQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    if (!window.jQuery) document.write('<script src="{{url_for('static', filename='js/jquery-3.6.0.min.js') }}"><\/script>');
+</script>
+
+<!-- Load JQuery UI -->
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+<script>
+    if (!window.jQuery.ui) document.write('<script src="{{url_for('static', filename='js/jquery-ui-1.13.0.min.js') }}"><\/script>');
+</script>
+
+<!-- Load Datatables -->
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script>
+    if (!window.jQuery.fn.dataTable) document.write('<script src="{{url_for('static', filename='js/jquery-dataTables-1.11.3.min.js') }}"><\/script>');
+</script>
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"/>
+<!-- Overwrite with custom CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<head>
+      <header>
+{% block header %}
+
+  <meta charset="UTF-8">
+  <title>CST</title>
+  <nav>
+    <h1>Corpus Selection Tool Prototype</h1>
+    <ul>
+      {% if g.user %}
+      <li><span>{{ g.user['username'] }}</span>
+      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+        {% else %}
+      <li><a href="{{ url_for('auth.register') }}">Register</a>
+      <li><a href="{{ url_for('auth.login') }}">Log In</a>
+        {% endif %}
+    </ul>
+  </nav>
+    <nav class="nav-effect" style="justify-content: space-between;">
+    <a href="{{ url_for('search.index') }}" data-hover="Build corpus" > Build corpus </a>
+    <a href="{{ url_for('extract.overview') }}" data-hover="My corpora" > My corpora </a>
+  </nav>
+
+<!--<div class = "row">
+  <div class="column" style = "flex: 50"><a href="{{ url_for('search.index') }}"> <h1>Build corpus</h1> </a></div>
+  <div class="column" style = "flex: 50"><a href="{{ url_for('extract.overview') }}"> <h1>My corpora</h1> </a> </div>
+</div>-->
+{% endblock %}
+  </header>
+</head>
+<body>
+<section class="content">
+
+  {% for message in get_flashed_messages() %}
+  <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>
+</body>
+</html>

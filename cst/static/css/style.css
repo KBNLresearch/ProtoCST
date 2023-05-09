@@ -1,0 +1,106 @@
+html { font-family: Arial,Helvetica,sans-serif; background: white;}
+body { margin: 0 auto; background: white; } /*max-width: 1500px; */
+h1 { color: #01415b; margin: 1rem 0; }
+a { color: #377ba8; }
+hr { border: none; border-top: 1px solid #9cdbd9; }
+nav { background: #9cdbd9; display: flex; align-items: center; padding: 0 0.5rem; }
+nav h1 { flex: auto; margin: 0; }
+nav h1 a { text-decoration: none; padding: 0.25rem 0.5rem; }
+nav ul  { display: flex; list-style: none; margin: 0; padding: 0; }
+nav ul li a, nav ul li span, header .action { display: block; padding: 0.5rem; }
+.content { padding: 0 0.5rem 0.5rem; }
+.content > header { border-bottom: 1px solid #9cdbd9; display: flex; align-items: flex-end; }
+.content > header h1 { flex: auto; margin: 1rem 0 0.25rem 0; }
+.flash { margin: 1em 0; padding: 1em; background: #cae6f6; border: 1px solid #377ba8; }
+.post > header { display: flex; align-items: flex-end; font-size: 0.85em; }
+.post > header > div:first-of-type { flex: auto; }
+.post > header h1 { font-size: 1.5em; margin-bottom: 0; }
+.post .about { color: #9cdbd9; font-style: italic; }
+.post .body { white-space: pre-line; }
+.content:last-child { margin-bottom: 0; }
+.content form { margin: 1em 0; display: flex; flex-direction: column; }
+.content label { font-weight: bold; margin-bottom: 0.5em; }
+.content input, .content textarea { margin-bottom: 1em; }
+.content textarea { min-height: 12em; resize: vertical; }
+input.danger { color: #cc2f2e; }
+input[type=submit] { align-self: start; min-width: 10em; }
+
+.corpora-container {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.corpus-card {
+  padding: 2rem;
+  margin: 2rem;
+  width: 25rem;
+  max-width: 25rem;
+  border: 5px solid #01415b;
+  border-radius: 25px;
+}
+
+.scrollbox {
+height:8rem;width:25rem;border:1px solid #01415b; border-radius: 5px; overflow:auto;}
+
+.row {
+  display: flex;
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
+.column {
+  padding: 10px;
+  /*border: 3px solid green;*/
+}
+
+.filter {
+  flex: 30%;
+}
+
+.stats {
+  flex: 70%;
+}
+
+.checkboxgroup{
+    width: 20em;
+    overflow: auto;
+}
+
+.checkboxgroup label{
+    width: 12em;
+    float: left;
+    padding-left: 1em;
+}
+
+.nav-effect a {
+	text-transform: uppercase;
+	font-weight: bold;
+	text-align: center;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	padding-left: 5rem;
+	padding-right: 5rem;
+}
+
+.nav-effect a::before {
+	content: attr(data-hover);
+	color: #01415b;
+	position: absolute;
+
+	transition: transform 0.3s, opacity 0.3s;
+	-moz-transition: -moz-transform 0.3s, opacity 0.3s;
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+}
+
+.nav-effect a:hover::before,
+.nav-effect a:focus::before {
+	opacity: 0;
+}
+
+
+.ui-state-active {
+  border: 1px solid #01415b;
+  background: #9cdbd9;
+  color: #01415b;
+}
