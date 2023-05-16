@@ -1,7 +1,7 @@
 import pandas as pd
 from bs4 import BeautifulSoup
 import os
-
+import cst
 from cst import db
 
 def df_from_didl_soup(soup):
@@ -29,3 +29,7 @@ def ingest_from_directory(dir_path, replace = False):
     df = pd.DataFrame(all_metadata)
     with db.get_db() as con:
         df.to_sql("document",con, if_exists='replace' if replace else 'append')
+
+if __name__ == '__main__':
+    with cst.create_app() as app:
+        ingest_from_directory('harvested_data/metadata')
