@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="scrollbox">{{ corpus['description'] if corpus['description'] else ''}}</div>
+            <table>
+                <tbody>
+                <tr> <td>Corpus ID</td> <td> {{ corpus['id'] }}</td> </tr>
+                <tr> <td>Number of documents</td> <td> {{ corpus['nDocuments'] }}</td> </tr>
+                <tr> <td>Created on</td> <td> {{ corpus['created'] }}</td> </tr>
+                </tbody>
+            </table>
+            <div class="row">
+                <button type="submit" id="download-sample">Download a sample (100 items) </button>
+                <button type="submit" id="request-download">Request full download link (may take up to .. hours)</button>
+                <button type="submit" id="export-sane">Export to SANE (may take up to .. hours)</button>
+            </div>
+{% endblock %}
+
+
+Share with other user??
+
+Access: ask permission
+
