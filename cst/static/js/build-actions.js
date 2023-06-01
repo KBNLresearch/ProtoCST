@@ -17,7 +17,7 @@ cancelButton.addEventListener("click", () => {
   saveDialog.close("corpusNotSaved");
 });
 
-// Form cancel button closes the dialog box
+// Form save button makes a call to the backend
 $('#save').click(function() {
   $.post('save-corpus',
   {
@@ -31,4 +31,6 @@ $('#save').click(function() {
     saveDialog.close("corpusWasSaved");
   });
 });
+
+
 
