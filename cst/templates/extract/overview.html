@@ -19,11 +19,11 @@
             </table>
             <div class="row">
                 <button type="submit" name= "open-corpus" id="open-corpus-{{ corpus['id'] }}">Open in corpus builder</button>
-                <button type="submit" onclick="window.location.href=&quot;{{ url_for('extract.extract_corpus') }}&quot;" name= "extract-corpus" id="extract-corpus-{{ corpus['id'] }}">Export options</button>
+                <button type="submit" onclick="window.location.href=&quot;{{ url_for('extract.extract_corpus', corpus_id=corpus['id']) }}&quot;" name= "extract-corpus" id="extract-corpus-{{ corpus['id'] }}">Export options</button>
                 <button type="submit" name= "delete-corpus" id="delete-corpus-{{ corpus['id'] }}">Delete corpus</button>
+                <button type="submit" name="share-corpus">Share with other user</button>
             </div>
         </div>
-
         {%endfor%}
     </div>
 </div>

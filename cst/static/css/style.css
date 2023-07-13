@@ -24,6 +24,10 @@ nav ul li a, nav ul li span, header .action { display: block; padding: 0.5rem; }
 .content textarea { min-height: 12em; resize: vertical; }
 input.danger { color: #cc2f2e; }
 input[type=submit] { align-self: start; min-width: 10em; }
+button { margin:0.2em;}
+
+
+td {vertical-align: top;}
 
 .corpora-container {
   display:flex;
@@ -33,7 +37,7 @@ input[type=submit] { align-self: start; min-width: 10em; }
 
 .corpus-card {
   padding: 2rem;
-  margin: 2rem;
+  margin: 1rem;
   width: 25rem;
   max-width: 25rem;
   border: 5px solid #01415b;
