@@ -1,0 +1,40 @@
+
+<div class="chart-container" style="position: relative; height:30vh; width:30vw">
+                        <canvas id="period_bars"></canvas></div>
+<div class="chart-container" style="position: relative; height:20vh; width:20vw">
+                        <canvas id="access_doughnut"></canvas></div>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type=text/javascript>
+const ctx_1 = document.getElementById('access_doughnut');
+new Chart(ctx_1, {
+    type: 'doughnut',
+    data: {
+        labels: ['Public Domain', 'CC0', 'Under copyright'],
+        datasets: [{
+            label: 'Access restrictions',
+            data: [30,12,56],
+            backgroundColor: ['#9cdbd9','#407ec9','#ef6079'],
+            hoverOffset: 4
+        }]
+    }
+});
+
+const ctx_2 = document.getElementById('period_bars');
+new Chart(ctx_2, {
+    type: 'bar',
+    data: {
+        labels: ['1900-1910','1910-1920','1920-1930','1930-1940','1940-1950','1950-1960','1960-1970','1970-1980'],
+        datasets: [{
+            label: 'Period',
+            data: [3,5,14,26,19,42,64,33],
+            backgroundColor: ['#9cdbd9'],
+            hoverOffset: 4
+        }]
+    }
+});
+</script>
