@@ -1,23 +1,58 @@
 {% extends 'base.html' %}
 
+{% set request_text = """
+I would like to request access to a dataset that I created in the Frankenstein Corpus Builder.
+The dataset ID is {corpus_id}.
+
+[Please describe why you need the data, and state your affiliation.]
+
+""" %}
+
+
 {% block content %}
-<div class="scrollbox">{{ corpus['description'] if corpus['description'] else ''}}</div>
-            <table>
+
+            <div class="row">
+                <table>
                 <tbody>
                 <tr> <td>Corpus ID</td> <td> {{ corpus['id'] }}</td> </tr>
-                <tr> <td>Number of documents</td> <td> {{ corpus['nDocuments'] }}</td> </tr>
+                <tr> <td>Description</td> <td> <div class="scrollbox">{{ corpus['description'] if corpus['description'] else ''}}</div></td> </tr>
+                <tr> <td># Documents</td> <td> {{ corpus['nDocuments'] }}</td> </tr>
                 <tr> <td>Created on</td> <td> {{ corpus['created'] }}</td> </tr>
                 </tbody>
-            </table>
+                </table>
+                <div>
+                    <div class="chart-container" style="position: relative; height:20vh; width:20vw">
+                        <canvas id="access_doughnut"></canvas></div>
+            <div> 56% of the items in your dataset are not in the public domain/CC0.<br>
+                To request full access, please contact <a href="mailto:dataservices@kb.nl?subject=[Acces Request]&body={{ request_text.format(corpus_id = corpus['id']) }}" }}>dataservices@kb.nl</a>.</div>
+
+                </div>
+            </div>
+
             <div class="row">
                 <button type="submit" id="download-sample">Download a sample (100 items) </button>
                 <button type="submit" id="request-download">Request full download link (may take up to .. hours)</button>
                 <button type="submit" id="export-sane">Export to SANE (may take up to .. hours)</button>
             </div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type=text/javascript>
+const ctx = document.getElementById('access_doughnut');
+new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ['Public Domain', 'CC0', 'Under copyright'],
+        datasets: [{
+            label: 'Access restrictions',
+            data: [30,12,56],
+            backgroundColor: ['#9cdbd9','#407ec9','#ef6079'],
+            hoverOffset: 4
+        }]
+    }
+});
+</script>
+
+
 {% endblock %}
-
-
-Share with other user??
-
-Access: ask permission
-

@@ -24,10 +24,10 @@ def overview():
 @login_required
 def extract_corpus():
     corpus_id = request.args.get('corpus_id')
-    query = """SELECT corpus.name, corpus.description, corpus.created, COUNT(DISTINCT document_in_corpus.document_id) AS nDocuments
+    query = """SELECT corpus.*, COUNT(DISTINCT document_in_corpus.document_id) AS nDocuments
                 FROM corpus 
                 LEFT JOIN document_in_corpus ON corpus.id = document_in_corpus.corpus_id 
-                WHERE corpus_id = ?"""
+                WHERE corpus.id = ?"""
     db = get_db()
-    corpus = db.execute(query,(corpus_id,)).fetchall()
+    corpus = db.execute(query,(corpus_id,)).fetchone()
     return render_template('extract/export_options.html', corpus = corpus)
