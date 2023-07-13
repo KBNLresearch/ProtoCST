@@ -28,12 +28,12 @@ input[type=submit] { align-self: start; min-width: 10em; }
 .corpora-container {
   display:flex;
   flex-direction: row;
-    flex-wrap: wrap;
-
+  flex-wrap: wrap;
 }
 
 .corpus-card {
   padding: 2rem;
+  margin: 2rem;
   width: 25rem;
   max-width: 25rem;
   border: 5px solid #01415b;
