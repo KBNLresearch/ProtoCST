@@ -1,3 +1,6 @@
+
+$(document).ready(function() {
+
 const saveDialogButton = document.getElementById("save-corpus");
 const saveDialog = document.getElementById("save-dialog");
 const saveButton = document.getElementById("save");
@@ -9,16 +12,17 @@ saveDialogButton.addEventListener("click", () => {
   saveDialog.showModal();
 });
 
-
 // Form cancel button closes the dialog box
 cancelButton.addEventListener("click", () => {
   console.log('Saving corpus was cancelled.')
   saveDialog.close("corpusNotSaved");
 });
 
+
 // Form save button saves the corpus (ajax call to backend)
 $('#save').click(function() {
   console.log('Save corpus');
+
   $.post('save-corpus',
   {
     name: $('#corpus-name').val(),
@@ -31,3 +35,4 @@ $('#save').click(function() {
     saveDialog.close("corpusWasSaved");
   });
 });
+
