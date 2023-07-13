@@ -1,15 +1,16 @@
+
+$(document).ready(function() {
+
 const saveDialogButton = document.getElementById("save-corpus");
 const saveDialog = document.getElementById("save-dialog");
 const saveButton = document.getElementById("save");
 const cancelButton = document.getElementById("cancel");
 saveDialog.returnValue = "corpus name"
 
-
 // Save corpus button opens a modal dialog
 saveDialogButton.addEventListener("click", () => {
   saveDialog.showModal();
 });
-
 
 // Form cancel button closes the dialog box
 cancelButton.addEventListener("click", () => {
@@ -17,8 +18,11 @@ cancelButton.addEventListener("click", () => {
   saveDialog.close("corpusNotSaved");
 });
 
-// Form save button makes a call to the backend
+
+// Form save button saves the corpus (ajax call to backend)
 $('#save').click(function() {
+  console.log('Save corpus');
+
   $.post('save-corpus',
   {
     name: $('#corpus-name').val(),
@@ -31,6 +35,4 @@ $('#save').click(function() {
     saveDialog.close("corpusWasSaved");
   });
 });
-
-
 

@@ -35,3 +35,14 @@ def save_corpus():
     #except db.IntegrityError:
     #else:
 
+@bp.route('/delete-corpus', methods=['POST'])
+def delete_corpus():
+    corpus_id = str(request.form['corpusid'])
+    query = "DELETE FROM corpus WHERE id = ?;"
+    with get_db() as db:
+        cursor = db.cursor()
+        # TODO: exception handling
+        cursor.execute(query, (corpus_id,))
+        db.commit()
+
+    return f'Deleted corpus {corpus_id} from database'
