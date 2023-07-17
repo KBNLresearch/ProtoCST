@@ -17,7 +17,9 @@ WORKDIR /usr/app
 COPY --chown=user:user wsgi.py wsgi.py
 COPY --chown=user:user cst cst/
 
+RUN ls
+
 USER 999
-EXPOSE 3350
-ENV SCRIPT_NAME=/cst
+EXPOSE 5001
+ENV SCRIPT_NAME=/frankenstein
 CMD ["gunicorn", "-b :5001", "wsgi"]
